@@ -30,11 +30,8 @@ namespace MaCryptApi.Controllers
         [HttpGet("info")]
         public async Task<CryptoBySymbol> GetCryptoBySymbol([FromQuery] Parameters.OneCryptoParameter parameters)
         {
-
             var cryptoInfo = await _cryptoViewClient.GetCryptoBySymbol(parameters.Symbol, parameters.Pref);
-
             cryptoInfo.markets.RemoveRange(1, 2);
-
             return cryptoInfo;
         }
 
@@ -43,9 +40,7 @@ namespace MaCryptApi.Controllers
         public async Task<CryptoList> GetCryptoList([FromQuery] Parameters.CryptoListParameter parameters)
         {
             var cryptoList = await _cryptoViewClient.GetCryptoList(parameters.Pref, parameters.Order);
-
             cryptoList.coins.RemoveRange(10, 90);
-
             return cryptoList;
         }
 
@@ -54,7 +49,6 @@ namespace MaCryptApi.Controllers
         public async Task<Responses> GetWalletInfo([FromQuery] Parameters.WalletParameter parameters)
         {
             var walletInfo = await _blockchainClient.GetWalletInfo(parameters.Adress);
-
             var result = new Responses
             {
                 AddressOfOwner = walletInfo.address,
@@ -63,7 +57,6 @@ namespace MaCryptApi.Controllers
                 TotalSent = Convert.ToString(walletInfo.total_sent / 100000000),
                 CurrentBalance = Convert.ToString(walletInfo.final_balance / 100000000),
             };
-
             result.Transactions = new List<Responses.Transaction>();
 
             foreach (Tx trans in walletInfo.txs)
@@ -78,7 +71,6 @@ namespace MaCryptApi.Controllers
                 };
                 result.Transactions.Add(transaction);
             }
-
             return result;
         }
 

@@ -1,0 +1,9 @@
+C:\Users\white\source\repos\MaCryptApi\AccountStore\bin\Release\netcoreapp3.1\AccountStore.deps.json
+C:\Users\white\source\repos\MaCryptApi\AccountStore\bin\Release\netcoreapp3.1\AccountStore.dll
+C:\Users\white\source\repos\MaCryptApi\AccountStore\bin\Release\netcoreapp3.1\AccountStore.pdb
+C:\Users\white\source\repos\MaCryptApi\AccountStore\obj\Release\netcoreapp3.1\AccountStore.csprojAssemblyReference.cache
+C:\Users\white\source\repos\MaCryptApi\AccountStore\obj\Release\netcoreapp3.1\AccountStore.AssemblyInfoInputs.cache
+C:\Users\white\source\repos\MaCryptApi\AccountStore\obj\Release\netcoreapp3.1\AccountStore.AssemblyInfo.cs
+C:\Users\white\source\repos\MaCryptApi\AccountStore\obj\Release\netcoreapp3.1\AccountStore.csproj.CoreCompileInputs.cache
+C:\Users\white\source\repos\MaCryptApi\AccountStore\obj\Release\netcoreapp3.1\AccountStore.dll
+C:\Users\white\source\repos\MaCryptApi\AccountStore\obj\Release\netcoreapp3.1\AccountStore.pdb

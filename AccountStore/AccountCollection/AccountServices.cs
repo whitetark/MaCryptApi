@@ -23,7 +23,7 @@ namespace AccountStore.AccountCollection
             }
             catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
         public async Task<DeleteResult> DeleteAccount(string id)
@@ -34,7 +34,7 @@ namespace AccountStore.AccountCollection
             }
             catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
 
@@ -55,7 +55,6 @@ namespace AccountStore.AccountCollection
             try
             {
                return await _accounts.Find(account => account.ChatId == id).FirstOrDefaultAsync();
- 
             } 
             catch (Exception ex)
             {

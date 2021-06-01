@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MaCryptApi.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MaCryptApi.Clients
 {
@@ -24,28 +25,34 @@ namespace MaCryptApi.Clients
         
         public async Task<CryptoBySymbol> GetCryptoBySymbol(string symbol, string pref)
         {
-            var response = await _client.GetAsync($"/api/v1/coin?key={_apiKey}&pref={pref}&symbol={symbol}");
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                var response = await _client.GetAsync($"/api/v1/coin?key={_apiKey}&pref={pref}&symbol={symbol}");
+                response.EnsureSuccessStatusCode();
+                var content = response.Content.ReadAsStringAsync().Result;
+                CryptoBySymbol result = JsonConvert.DeserializeObject<CryptoBySymbol>(content);
 
-            var content = response.Content.ReadAsStringAsync().Result;
-
-            CryptoBySymbol result = JsonConvert.DeserializeObject<CryptoBySymbol>(content);
-
-
-            return result;
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<CryptoList> GetCryptoList(string pref, string order)
         {
-            var response = await _client.GetAsync($"/api/v1/coinlist?key={_apiKey}&pref={pref}&page=1&order={order}");
-            response.EnsureSuccessStatusCode();
-
-            var content = response.Content.ReadAsStringAsync().Result;
-
-            CryptoList result = JsonConvert.DeserializeObject<CryptoList>(content);
-
-
-            return result;
+            try
+            {
+                var response = await _client.GetAsync($"/api/v1/coinlist?key={_apiKey}&pref={pref}&page=1&order={order}");
+                response.EnsureSuccessStatusCode();
+                var content = response.Content.ReadAsStringAsync().Result;
+                CryptoList result = JsonConvert.DeserializeObject<CryptoList>(content);
+                return result;
+            } catch
+            {
+                return null;
+            }
         }
     }
 }
